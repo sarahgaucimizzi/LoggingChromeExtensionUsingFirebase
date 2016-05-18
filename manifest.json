@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+
+  "name": "Log user interaction",
+  "description": "Logs user interaction with webpage on to Firebase",
+  "version": "1.0",
+  "content_security_policy": "object-src 'self'; script-src 'self' 'unsafe-eval' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio-demo.com",
+
+  "browser_action": {
+    "default_icon": "pencil.png",
+    "default_title": "Log transactions",
+    "default_popup": "start_script.html"
+  },
+
+  "content_scripts": [{
+    "matches": ["http://www.skysports.com/*", "https://twitter.com/*", "http://www.imdb.com/*", "http://www.rottentomatoes.com/*", "https://play.spotify.com/*", "https://myspace.com/*"],
+    "js": ["jquery-2.2.1.min.js", "firebase.js", "extension_script.js"]
+  }],
+
+  "permissions": [
+    "http://www.skysports.com/*",
+    "https://twitter.com/*",
+    "http://www.imdb.com/*",
+    "http://www.rottentomatoes.com/*",
+    "https://play.spotify.com/*",
+    "https://myspace.com/*",
+    "activeTab",
+    "tabs",
+    "storage"
+  ]
+}
